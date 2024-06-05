@@ -8,6 +8,18 @@
 
 📢 频道 [折腾啥(频道)](https://t.me/zhetengsha)
 
+## Ecosystem
+
+以下版本均已内置 `http-meta`:
+
+[Sub-Store Android 模块](https://t.me/zhetengsha/1008)
+
+[Sub-Store Docker 版](https://hub.docker.com/r/xream/sub-store)
+
+[Sub-Store Hugging Face 版](https://www.notion.so/xream/Sub-Store-Hugging-Face-1787ae7c38df482eaeccea4e0f1d3a8d)
+
+[GUI.for.Cores 维护的插件](https://t.me/GUI_for_Cores_Channel/184)
+
 ## Usage
 
 > ⚠️ If a proxy is already running on the device running `http-meta`, you may need to exclude the `http-meta` process.
@@ -210,5 +222,31 @@ curl '127.0.0.1:9876/stats' \
         "mem": "2MB",
         "cpu": "0%"
     }
+}
+```
+
+## UDP Test(NTP via Proxy)
+
+`port`: proxy port
+
+`ntp`: ntp server(default: `time.apple.com`)
+
+`timeout`: timeout(default: `3000`ms)
+
+```console
+curl '127.0.0.1:9876/udp' \
+--header 'Content-Type: application/json' \
+--data '{
+    "port": 35955,
+    "ntp": "time.apple.com",
+    "timeout": 2000
+}'
+```
+
+### Response
+
+```JSON
+{
+    "data": "ok"
 }
 ```
